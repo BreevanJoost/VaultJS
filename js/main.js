@@ -24,6 +24,7 @@ function Vault(code, elem_id) {
         this.testCode();
         if(!isSafe) return null;
         _(elem_id).innerHTML += `
+        <div id="bigVaultContainer">
             <div class="vaultContainer">
 
                 <div id="${elem_id}-green-light" class="light green"></div>
@@ -34,14 +35,21 @@ function Vault(code, elem_id) {
 
                     <p id="${elem_id}-notif" class="vault-notif">Please enter the code! &nbsp;</p>
                     </div>
-                    <div class="vault-buttons">
+                    <div id="vaultbuttons">
+                    <div id="vaultButton1">
                         <button onclick="${elem_id}.buttonPress(this)" value="1">1</button>
+                    </div>
+                    <div id="vaultButton2">
                         <button onclick="${elem_id}.buttonPress(this)" value="2">2</button>
+                    </div>
+                    <div id="vaultButton3">
                         <button onclick="${elem_id}.buttonPress(this)" value="3">3</button>
                     </div>
-                    <p id="${elem_id}-stats" class="vault-notif">Times correct: 0 &middot; Times incorrect: 0</p>
+                    </div>
+                    <p id="${elem_id}-stats" class="vault-notif">Correct inputs: 0 &middot; Incorrect inputs: 0</p>
 
             </div>
+          </div>
         `;
     };
 
@@ -57,22 +65,8 @@ function Vault(code, elem_id) {
             isSafe = false;
             // noinspection EqualityComparisonWithCoercionJS
             let flag = enteredCode[0] == correctCode[0] && enteredCode[1] == correctCode[1] && enteredCode[2] == correctCode[2];
-            if(flag) {
-                player.pause();
-                player.src = "audio/open.mp3";
-                player.play();
-                blink("#" + elem_id + "-green-light", 9, 200);
-                _(elem_id + "-notif").innerHTML = "Code is correct";
-                countCorrect++;
-            }
-            else {player.pause();
-                player.src = "audio/closed.mp3";
-                player.play();
-                blink("#" + elem_id + "-red-light", 9, 200);
-                _(elem_id + "-notif").innerHTML = "Code is incorrect";
-                countWrong++;
-            }
-            _(elem_id + "-stats").innerHTML = `Times correct: ${countCorrect} &middot; Times incorrect: ${countWrong}`;
+            
+            _(elem_id + "-stats").innerHTML = `Correct inputs: ${countCorrect} &middot; Incorrect inputs: ${countWrong}`;
             setTimeout(() => {
                 isSafe = true;
                 _(elem_id + "-enteredCode").innerHTML = "-".repeat(code.length);
@@ -89,6 +83,22 @@ function Vault(code, elem_id) {
 
 }
 
+function blink(elem, times, speed) {
+    if (times > 0 || times < 0) {
+        if ($(elem).hasClass("blink")) $(elem).removeClass("blink");
+        else $(elem).addClass("blink");
+    }
 
+    clearTimeout(() => {
+        blink(elem, times, speed);
+    });
+
+    if (times > 0 || times < 0) {
+        setTimeout(() => {
+            blink(elem, times, speed);
+        }, speed);
+        times -= .5;
+    }
+}
 
 function _(id) { return document.getElementById(id); }
