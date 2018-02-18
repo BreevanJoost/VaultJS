@@ -25,6 +25,9 @@ function Vault(code, elem_id) {
         if(!isSafe) return null;
         _(elem_id).innerHTML += `
         <div id="bigVaultContainer">
+          <div id="vaultName">
+            Project Vault
+          </div>
             <div class="vaultContainer">
 
                 <div id="${elem_id}-green-light" class="light green"></div>
@@ -65,7 +68,21 @@ function Vault(code, elem_id) {
             isSafe = false;
             // noinspection EqualityComparisonWithCoercionJS
             let flag = enteredCode[0] == correctCode[0] && enteredCode[1] == correctCode[1] && enteredCode[2] == correctCode[2];
-            
+            if(flag) {
+                player.pause();
+                player.src = "audio/open.mp3";
+                player.play();
+                blink("#" + elem_id + "-green-light", 9, 200);
+                _(elem_id + "-notif").innerHTML = "Code is correct";
+                countCorrect++;
+            }
+            else {player.pause();
+                player.src = "audio/closed.mp3";
+                player.play();
+                blink("#" + elem_id + "-red-light", 9, 200);
+                _(elem_id + "-notif").innerHTML = "Code is incorrect";
+                countWrong++;
+            }
             _(elem_id + "-stats").innerHTML = `Correct inputs: ${countCorrect} &middot; Incorrect inputs: ${countWrong}`;
             setTimeout(() => {
                 isSafe = true;

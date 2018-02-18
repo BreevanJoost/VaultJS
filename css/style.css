@@ -5,14 +5,18 @@ body {
 
 #vaultName {
   margin: 0 auto;
+  margin-top: 10px;
+  width: 400px;
   text-align: center;
-  font-size: 70px;
-  color: white;
+  font-size: 50px;
+  color: #0099cc;
   padding: 10px;
   font-family: calibri;
-  background-color: #0099cc;
-  border-radius: 15px;
+  background-color: #cccccc;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   text-transform: uppercase;
+  text-decoration: underline;
 }
 
 .main-container {
@@ -23,13 +27,11 @@ body {
     text-align: center;
 }
 
-.p-30 {
-   width: 30%;
-}
+
 
 #bigVaultContainer {
     width: 445px;
-    height: 405px;
+    height: 495px;
     background: #0099cc;
     padding: 10px;
     border-radius: 15px;
@@ -43,10 +45,10 @@ body {
     height: 365px;
     background: #cccccc;
     padding: 10px;
-    border-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     padding 0px;
     margin: auto;
-    margin-top: 10px;
 }
 
 .vaultContainer .light {
