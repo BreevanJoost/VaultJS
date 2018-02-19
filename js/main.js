@@ -66,7 +66,7 @@ function Vault(code, elem_id) {
         _(elem_id + "-enteredCode").innerHTML = (enteredCode.join("") + ("-".repeat(code.length)) ).substring(0, 3);
         if(enteredCode.length === 3) {
             isSafe = false;
-            // noinspection EqualityComparisonWithCoercionJS
+
             let flag = enteredCode[0] == correctCode[0] && enteredCode[1] == correctCode[1] && enteredCode[2] == correctCode[2];
             if(flag) {
                 player.pause();

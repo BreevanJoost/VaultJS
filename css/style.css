@@ -96,10 +96,6 @@ body {
     border-radius: 10px;
 }
 
-#vaultbuttons {
-
-}
-
 #vaultButton1 > button {
     background: #0099cc;
     cursor: pointer;
@@ -107,7 +103,24 @@ body {
     font-family: calibri;
     width: 129px;
     height: 70px;
-    border: white 1px solid;
+    border: none;
+    margin: 3px;
+    margin-left: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-size: 40px;
+    float: left;
+    cursor: pointer;
+}
+
+#vaultButton1 > button:hover {
+    background: #0066cc;
+    cursor: pointer;
+    color: white;
+    font-family: calibri;
+    width: 129px;
+    height: 70px;
+    border: none;
     margin: 3px;
     margin-left: 0px;
     border-top-left-radius: 10px;
@@ -124,7 +137,21 @@ body {
     font-family: calibri;
     width: 129px;
     height: 70px;
-    border: white 1px solid;
+    border: none;
+    margin: 3px;
+    font-size: 40px;
+    float: left;
+    cursor: pointer;
+}
+
+#vaultButton2 > button:hover {
+    background: #0066cc;
+    cursor: pointer;
+    color: white;
+    font-family: calibri;
+    width: 129px;
+    height: 70px;
+    border: none;
     margin: 3px;
     font-size: 40px;
     float: left;
@@ -138,7 +165,24 @@ body {
     font-family: calibri;
     width: 129px;
     height: 70px;
-    border: white 1px solid;
+    border: none;
+    margin: 3px;
+    margin-right: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 40px;
+    float: left;
+    cursor: pointer;
+}
+
+#vaultButton3 > button:hover {
+    background: #0066cc;
+    cursor: pointer;
+    color: white;
+    font-family: calibri;
+    width: 129px;
+    height: 70px;
+    border: none;
     margin: 3px;
     margin-right: 0px;
     border-top-right-radius: 10px;
