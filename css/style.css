@@ -8,8 +8,8 @@ body {
   margin-top: 10px;
   width: 400px;
   text-align: center;
-  font-size: 50px;
-  color: #0099cc;
+  font-size: 55px;
+  color: #0066cc;
   padding: 10px;
   font-family: calibri;
   background-color: #cccccc;
@@ -19,20 +19,34 @@ body {
   text-decoration: underline;
 }
 
-.main-container {
-    margin: 20px auto 0 auto;
-    width: 80%;
-    align-items: center;
-    margin: 0 auto;
-    text-align: center;
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
 }
 
+@keyframes shakeY {
+  0%, 100% {transform: translateY(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateY(-10px);}
+  20%, 40%, 60%, 80% {transform: translateY(10px);}
+}
+.shakeY {
+  animation-name: shakeY;
+}
 
+@keyframes shakeX {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-20px);}
+  20%, 40%, 60%, 80% {transform: translateX(20px);}
+}
+.shakeX {
+  animation-name: shakeX;
+}
 
-#bigVaultContainer {
+#blueVaultContainer {
     width: 445px;
     height: 495px;
-    background: #0099cc;
+    background: #0066cc;
     padding: 10px;
     border-radius: 15px;
     margin: 0 auto;
@@ -40,7 +54,7 @@ body {
     text-align: center;
 }
 
-.vaultContainer {
+.GreyVaultContainer {
     width: 400px;
     height: 365px;
     background: #cccccc;
@@ -51,28 +65,28 @@ body {
     margin: auto;
 }
 
-.vaultContainer .light {
+.GreyVaultContainer .light {
     background: black;
     width: 200px;
     float: left;
     height: 50px;
 }
 
-.vaultContainer .light.red {
+.GreyVaultContainer .light.red {
     background: red;
     filter: brightness(30%);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
-.vaultContainer .light.green {
+.GreyVaultContainer .light.green {
     background: green;
     filter: brightness(30%);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
-.vaultContainer .light.blink {
+.GreyVaultContainer .light.blink {
     -webkit-filter: brightness(100%);
     filter: brightness(100%);
 }
@@ -81,8 +95,8 @@ body {
     clear: both;
 }
 
-.code-box {
-    color: #0099cc;
+.codeBox {
+    color: #0066cc;
     text-align: center;
     font-size: 100px;
     margin: 4px auto;
@@ -90,7 +104,7 @@ body {
     height: 120px;
 }
 
-.black-box {
+.blackBox {
     width: 100%;
     background-color: black;
     border-radius: 10px;
@@ -110,24 +124,10 @@ body {
     border-bottom-left-radius: 10px;
     font-size: 40px;
     float: left;
-    cursor: pointer;
 }
 
 #vaultButton1 > button:hover {
     background: #0066cc;
-    cursor: pointer;
-    color: white;
-    font-family: calibri;
-    width: 129px;
-    height: 70px;
-    border: none;
-    margin: 3px;
-    margin-left: 0px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    font-size: 40px;
-    float: left;
-    cursor: pointer;
 }
 
 #vaultButton2 > button {
@@ -141,21 +141,10 @@ body {
     margin: 3px;
     font-size: 40px;
     float: left;
-    cursor: pointer;
 }
 
 #vaultButton2 > button:hover {
     background: #0066cc;
-    cursor: pointer;
-    color: white;
-    font-family: calibri;
-    width: 129px;
-    height: 70px;
-    border: none;
-    margin: 3px;
-    font-size: 40px;
-    float: left;
-    cursor: pointer;
 }
 
 #vaultButton3 > button {
@@ -177,23 +166,10 @@ body {
 
 #vaultButton3 > button:hover {
     background: #0066cc;
-    cursor: pointer;
-    color: white;
-    font-family: calibri;
-    width: 129px;
-    height: 70px;
-    border: none;
-    margin: 3px;
-    margin-right: 0px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    font-size: 40px;
-    float: left;
-    cursor: pointer;
 }
 
-.vault-notif {
-    color: #0099cc;
+.vaultNotif {
+    color: #0066cc;
     text-align: center;
     font-family: calibri;
     font-size: 20px;

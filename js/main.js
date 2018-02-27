@@ -19,24 +19,38 @@ function Vault(code, elem_id) {
         }
     };
 
+    $(function(){
+      $("#ShakeY").hide()
+      $('#ShakeX').hide()
+      $('#noAnimation').show()
+   });
 
     this.init = function () {
         this.testCode();
         if(!isSafe) return null;
         _(elem_id).innerHTML += `
-        <div id="bigVaultContainer">
+        <div id="blueVaultContainer">
           <div id="vaultName">
-            Project Vault
+            <div id="ShakeY">
+              <div class="text animated shakeY">Project Vault</div>
+            </div>
+            <div id="ShakeX">
+              <div class="text animated shakeX">Project Vault</div>
+            </div>
+            <div id="noAnimation">
+              Project Vault
+            </div>
           </div>
-            <div class="vaultContainer">
+
+            <div class="GreyVaultContainer">
 
                 <div id="${elem_id}-green-light" class="light green"></div>
                 <div id="${elem_id}-red-light" class="light red"></div>
                 <div class="clearfix"></div>
-                <div class="black-box">
-                <h3 id="${elem_id}-enteredCode" class="code-box">${"-".repeat(code.length)}</h3>
+                <div class="blackBox">
+                <h3 id="${elem_id}-enteredCode" class="codeBox">${"-".repeat(code.length)}</h3>
 
-                    <p id="${elem_id}-notif" class="vault-notif">Please enter the code! &nbsp;</p>
+                    <p id="${elem_id}-notif" class="vaultNotif">Please enter the code! &nbsp;</p>
                     </div>
                     <div id="vaultbuttons">
                     <div id="vaultButton1">
@@ -49,7 +63,7 @@ function Vault(code, elem_id) {
                         <button onclick="${elem_id}.buttonPress(this)" value="3">3</button>
                     </div>
                     </div>
-                    <p id="${elem_id}-stats" class="vault-notif">Correct inputs: 0 &middot; Incorrect inputs: 0</p>
+                    <p id="${elem_id}-stats" class="vaultNotif">Correct inputs: 0 &middot; Incorrect inputs: 0</p>
 
             </div>
           </div>
@@ -67,27 +81,36 @@ function Vault(code, elem_id) {
         if(enteredCode.length === 3) {
             isSafe = false;
 
-            let flag = enteredCode[0] == correctCode[0] && enteredCode[1] == correctCode[1] && enteredCode[2] == correctCode[2];
+            let flag = enteredCode[0] == correctCode[0] && enteredCode[1] == correctCode[0] && enteredCode[2] == correctCode[0];
             if(flag) {
                 player.pause();
                 player.src = "audio/open.mp3";
                 player.play();
                 blink("#" + elem_id + "-green-light", 9, 200);
-                _(elem_id + "-notif").innerHTML = "Code is correct";
+                _(elem_id + "-notif").innerHTML = "Code is correct!";
+                $('#ShakeY').show()
+                $('#ShakeX').hide()
+                $('#noAnimation').hide()
                 countCorrect++;
             }
             else {player.pause();
                 player.src = "audio/closed.mp3";
                 player.play();
                 blink("#" + elem_id + "-red-light", 9, 200);
-                _(elem_id + "-notif").innerHTML = "Code is incorrect";
+                _(elem_id + "-notif").innerHTML = "Code is incorrect!";
+                $('#ShakeY').hide()
+                $('#ShakeX').show()
+                $('#noAnimation').hide()
                 countWrong++;
             }
             _(elem_id + "-stats").innerHTML = `Correct inputs: ${countCorrect} &middot; Incorrect inputs: ${countWrong}`;
             setTimeout(() => {
                 isSafe = true;
+                $('#ShakeY').hide()
+                $('#ShakeX').hide()
+                $('#noAnimation').show()
                 _(elem_id + "-enteredCode").innerHTML = "-".repeat(code.length);
-                _(elem_id + "-notif").innerHTML = "&nbsp;";
+                _(elem_id + "-notif").innerHTML = "Please enter the code! &nbsp;";
             }, 3600);
             enteredCode.splice(0, enteredCode.length);
         }
